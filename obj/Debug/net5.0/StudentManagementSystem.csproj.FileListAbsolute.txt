@@ -1,0 +1,7 @@
+D:\Documents\Side projects\c# .NET core stuff\c#Project20Oct2\StudentManagementSystem\obj\Debug\net5.0\StudentManagementSystem.csproj.AssemblyReference.cache
+D:\Documents\Side projects\c# .NET core stuff\c#Project20Oct2\StudentManagementSystem\obj\Debug\net5.0\StudentManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Side projects\c# .NET core stuff\c#Project20Oct2\StudentManagementSystem\obj\Debug\net5.0\StudentManagementSystem.AssemblyInfoInputs.cache
+D:\Documents\Side projects\c# .NET core stuff\c#Project20Oct2\StudentManagementSystem\obj\Debug\net5.0\StudentManagementSystem.AssemblyInfo.cs
+D:\Documents\Side projects\c# .NET core stuff\c#Project20Oct2\StudentManagementSystem\obj\Debug\net5.0\StudentManagementSystem.csproj.CoreCompileInputs.cache
+D:\Documents\Side projects\c# .NET core stuff\c#Project20Oct2\StudentManagementSystem\obj\Debug\net5.0\StudentManagementSystem.MvcApplicationPartsAssemblyInfo.cs
+D:\Documents\Side projects\c# .NET core stuff\c#Project20Oct2\StudentManagementSystem\obj\Debug\net5.0\StudentManagementSystem.MvcApplicationPartsAssemblyInfo.cache
