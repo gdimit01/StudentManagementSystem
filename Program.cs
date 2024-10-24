@@ -5,7 +5,8 @@ using StudentManagementSystem.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting; // Add this for IsDevelopment
-using System; // Add this for Uri
+using System;
+using StudentManagementSystem.DependencyInjection; // Add this for Uri
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,10 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<DatabaseConnection>();
 
 // Register services
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
-builder.Services.AddScoped<TeacherService>(); // Register TeacherService
-builder.Services.AddScoped<AuthService>(); // Register AuthService
+builder.Services.RegisterDependencies();
 
 // Register Swagger
 builder.Services.AddEndpointsApiExplorer();
