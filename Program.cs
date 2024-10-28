@@ -15,9 +15,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Register DatabaseConnection for Dapper
-builder.Services.AddSingleton<DatabaseConnection>();
-
 //Register EF core
 builder.Services.AddDbContext<SmsContext>(opt =>
 {
