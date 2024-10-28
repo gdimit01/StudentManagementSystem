@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting; // Add this for IsDevelopment
 using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using StudentManagementSystem.DependencyInjection; // Add this for Uri
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,12 @@ builder.Services.AddControllers();
 
 // Register DatabaseConnection for Dapper
 builder.Services.AddSingleton<DatabaseConnection>();
+
+//Register EF core
+builder.Services.AddDbContext<SmsContext>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 // Register services
 builder.Services.RegisterDependencies();
