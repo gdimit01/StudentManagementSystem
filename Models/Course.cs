@@ -1,10 +1,12 @@
 using System;
+using StudentManagementSystem.Models.Interfaces;
 
 namespace StudentManagementSystem.Models
 {
-    public class Course
+    public class Course : IBaseEntity
     {
-        public int CourseId { get; set; }
+        public int Id { get; set; }
+        public bool IsDeleted { get; set; }
         public string CourseName { get; set; }
         public string Description { get; set; }
         public int Credits { get; set; }

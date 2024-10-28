@@ -1,10 +1,12 @@
 using System;
+using StudentManagementSystem.Models.Interfaces;
 
 namespace StudentManagementSystem.Models
 {
-    public class Department
+    public class Department : IBaseEntity
     {
-        public int DepartmentId { get; set; }
+        public int Id { get; set; }
+        public bool IsDeleted { get; set; }
         public string DepartmentName { get; set; }
         public string HeadOfDepartment { get; set; }
 

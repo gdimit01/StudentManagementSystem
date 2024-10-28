@@ -1,8 +1,11 @@
+using StudentManagementSystem.Models.Interfaces;
+
 namespace StudentManagementSystem.Models
 {
-    public class User
+    public class User : IBaseEntity
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
+        public bool IsDeleted { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
