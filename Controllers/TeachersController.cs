@@ -21,10 +21,6 @@ namespace StudentManagementSystem.Controllers
         public IActionResult GetAllTeachers()
         {
             var teachers = _teacherService.GetAllTeachers();
-            if (teachers == null || !teachers.Any()) // 'Any' now works with System.Linq
-            {
-                return NotFound("No teachers found.");
-            }
             return Ok(teachers);
         }
 
@@ -33,6 +29,7 @@ namespace StudentManagementSystem.Controllers
         public IActionResult GetTeacherById(int id)
         {
             var teacher = _teacherService.GetTeacherById(id);
+            
             if (teacher == null)
             {
                 return NotFound($"Teacher with ID {id} not found.");
@@ -62,27 +59,25 @@ namespace StudentManagementSystem.Controllers
                 return BadRequest("Teacher data is invalid or mismatched.");
             }
 
-            var existingTeacher = _teacherService.GetTeacherById(id);
-            if (existingTeacher == null)
+            var teacher = _teacherService.UpdateTeacher(id, updatedTeacher);
+
+            if (teacher == null)
             {
-                return NotFound($"Teacher with ID {id} not found.");
+                return NotFound($"Could not find teacher with ID: {id}.");
             }
 
-            _teacherService.UpdateTeacher(updatedTeacher);
-            return NoContent();
+            return Ok(teacher);
         }
 
         // DELETE: api/teachers/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteTeacher(int id)
         {
-            var teacher = _teacherService.GetTeacherById(id);
-            if (teacher == null)
+            if (!_teacherService.DeleteTeacher(id))
             {
-                return NotFound($"Teacher with ID {id} not found.");
+                return NotFound($"Could not find student with ID: {id}.");
             }
 
-            _teacherService.DeleteTeacher(id);
             return NoContent();
         }
     }
