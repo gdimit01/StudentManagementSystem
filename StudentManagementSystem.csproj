@@ -9,7 +9,7 @@
     <!-- Remove the line below if it exists -->
     <!-- <PackageReference Include="Microsoft.AspNetCore.App" /> -->
   </ItemGroup>
-
+<!-- // -->
   <ItemGroup>
     <!-- Other dependencies -->
     <PackageReference Include="Dapper" Version="2.0.123" />
