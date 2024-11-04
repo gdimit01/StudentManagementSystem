@@ -6,36 +6,38 @@ namespace StudentManagementSystem.Services
 {
     public class TeacherService : ITeacherService
     {
-        private readonly ITeacherRepository _teacherRepository;
+        private readonly IGenericRepository<Teacher> _genericRepository;
 
-        public TeacherService(ITeacherRepository teacherRepository)
+        public TeacherService(IGenericRepository<Teacher> genericRepository)
         {
-            _teacherRepository = teacherRepository;
+            _genericRepository = genericRepository;
         }
 
         public IEnumerable<Teacher> GetAllTeachers()
         {
-            return _teacherRepository.GetAllTeachers();
+            return _genericRepository.GetAll();
         }
 
         public Teacher GetTeacherById(int id)
         {
-            return _teacherRepository.GetTeacherById(id);
+            return _genericRepository.GetById(id);
         }
 
-        public void AddTeacher(Teacher teacher)
+        public Teacher AddTeacher(Teacher teacher)
         {
-            _teacherRepository.AddTeacher(teacher);
+            return _genericRepository.Add(teacher);
         }
 
-        public void UpdateTeacher(Teacher teacher)
+        public Teacher UpdateTeacher(int id, Teacher updatedTeacher)
         {
-            _teacherRepository.UpdateTeacher(teacher);
+            var existingTeacher = _genericRepository.GetById(id);
+            
+            return _genericRepository.Update(existingTeacher, updatedTeacher);
         }
 
-        public void DeleteTeacher(int id)
+        public bool DeleteTeacher(int id)
         {
-            _teacherRepository.DeleteTeacher(id);
+            return _genericRepository.Delete(id);
         }
     }
 }

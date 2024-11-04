@@ -6,29 +6,38 @@ namespace StudentManagementSystem.Services
 {
     public class StudentService
     {
-        private readonly IStudentRepository _studentRepository;
+        private readonly IGenericRepository<Student> _genericRepository;
 
-        public StudentService(IStudentRepository studentRepository)
+        public StudentService(IGenericRepository<Student> genericRepository)
         {
-            _studentRepository = studentRepository;
+            _genericRepository = genericRepository;
         }
 
-        public IEnumerable<Student> GetAllStudents() => _studentRepository.GetAllStudents();
-        public Student GetStudentById(int id) => _studentRepository.GetStudentById(id);
-        public void AddStudent(Student student) => _studentRepository.AddStudent(student);
-        public bool UpdateStudent(int id, Student student)
+        public IEnumerable<Student> GetAllStudents()
         {
-            var existingStudent = _studentRepository.GetStudentById(id);
-            if (existingStudent == null) return false;
-
-            existingStudent.FirstName = student.FirstName;
-            existingStudent.LastName = student.LastName;
-            existingStudent.Age = student.Age;
-            existingStudent.School = student.School;
-
-            return _studentRepository.UpdateStudent(existingStudent);
+            return _genericRepository.GetAll();
         }
 
-        public bool DeleteStudent(int id) => _studentRepository.DeleteStudent(id);
+        public Student GetStudentById(int id)
+        {
+            return _genericRepository.GetById(id);
+        }
+        
+        public Student AddStudent(Student student)
+        {
+            return _genericRepository.Add(student);
+        }
+        
+        public Student UpdateStudent(int id, Student updatedStudent)
+        {
+            var existingStudent = _genericRepository.GetById(id);
+            
+            return existingStudent == null ? null : _genericRepository.Update(existingStudent, updatedStudent);
+        }
+
+        public bool DeleteStudent(int id)
+        {
+            return _genericRepository.Delete(id);
+        }
     }
 }
